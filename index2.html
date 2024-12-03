@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <title>PARIKSHA</title>
+    <link rel="stylesheet" href="./css/Style.css">
+    <!-- <link rel="stylesheet" href="logo.css"> -->
+    <style>
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /*
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 2px,
+                    transparent 2px),
+                /* linear-gradient(90deg, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+            linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px); */
+                background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .spacer {
+            width: 100%;
+            height: 20vh;
+            margin-top: 5vh;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .main {
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            ;
+        }
+
+        .container {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .initial {
+            left: 60%;
+            top: 10%;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, #00d4ff, #1e88e5);
+            border-radius: 10px;
+        }
+
+        .second {
+            left: 10%;
+            top: 50%;
+        }
+
+        .marker {
+            border-radius: 10px;
+            /* border: 2px solid #00d4ff; */
+        }
+
+        .second .marker {
+            width: 100px;
+            height: 100px;
+        }
+
+        .third {
+            right: 10%;
+            bottom: 3rem;
+        }
+
+        .third .marker {
+            width: 100px;
+            height: 100px;
+        }
+
+        img {
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+
+        .canvas-body {
+            margin-top: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #0f0f0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .big-container{
+margin: 0;
+background-color: #282c34;
+color: white;
+height: 60vh;
+font-family: Arial, sans-serif;
+}
+
+.Container {
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 60vh;
+width: 100%;
+text-align: center;
+}
+
+#text {
+color: #dfdcff;
+font-size: 40px;
+line-height: 1.6;
+width: 80%;
+}
+
+.word {
+display: inline-block;
+}
+
+.spacer {
+height: 60vh;
+}
+
+
+.bi-div{
+    height: 180vh;
+}
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span>PARIKSHA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="book.html">Resources</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="feature.html">Features</a>
+            <a href="contact_us.html">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <button class="language-selector"><a href="thanks.html">🌐</a></button>
+            <a href="payment.html" class="contact-sales">Contact Sales</a>
+            <a href="index.html" class="login">Log Out</a>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAddJREFUWEfdmAEyRDEMhrMnwUlwEpwEJ7FOgpPgJPhMa16zbfp3X403MrOD0eZ9Tf6kebuzjdluYzz2b4BOzezazM7NjN/5vKVo8/PFzJ7TZygJoxG6M7PbgScA9/i1nn2SqUAXZvaQIiE5dosAu1EipgCRGmDWmhStHhAgAM20+yiFEdCsyNQO04RqAaGZp5lhUTXVAgIGKMWyNk6S6Ef2nfkH1IDUVLUqZ6Qiqbz9EqoG9CqW92VQxmrKOVQRJQ+kRocuDFBkatqLg3kgtcwJM+GOTO3qRcV5IPVUYS9JlOrhimh7IFU/SspUX4WOPNCHUudpzQxR42oaUOtuUiusWu3HamjpDDBS+J7mI7UxZh9hhFRRD2S2uzQUtVqqPkLLv5keR6xoIT5lOKM6ekbZ4yiPrX59HnGV6ZJO/eOndnVEaWMj1dUCqYHhL4pawTByuR7cO70wpv8D04KSLlcc0GV9tSA+HKjRybwtf9UDjg5o0ly8iFzUk6qN9dgRFlG33ruyXpgcWqI+SFU+RG/IV9rAaGMMJ4UeEOAKlKjvbw0WE6LfqACxJ6oUBWbqi+KyWtDFlTji5pv8V16lW52YLxswqulPvmxQ0rNqjaqhVQ8Z2bw5oE9sbHIlqeUz0gAAAABJRU5ErkJggg=="/>
+        </div>
+    </header>
+
+    <div class="canvas-body">
+        <canvas id="particleCanvas"></canvas>
+    </div>
+
+    <div class="big-container">
+        <div class="Container">
+            <div id="text">
+                Welcome to Pariksha: Your All-in-One Test Management Solution.
+                Pariksha is a modern platform built to streamline the creation, management, and analysis of educational
+                tests.
+            </div>
+        </div>
+        <!-- <div class="spacer"></div> -->
+    </div>
+    <!-- <div><canvas id="particleCanvas"></canvas></div> -->
+
+    <div class="bi-div">
+        <div class="spacer">
+            <h1>Welcome In The World Of PARIKSHA!!!</h1>
+        </div>
+        <div class="main">
+            <div class="container initial">
+                <div class="box">
+                </div>
+            </div>
+    
+            <div class="container second">
+                <div class="marker"></div>
+            </div>
+            <div class="container third">
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div class="spacer final"></div>
+    </div>
+
+
+
+
+    <!-- card start -->
+
+    <div class="txt3">Test Your Caliber With PARIKSHA:</div>
+    <!-- /* From Uiverse.io by aadium */  -->
+    <div class="card-container">
+
+
+        <div class="card-py">
+            <svg class="App-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454c.771 0 1.395.624 1.395 1.395s-.624 1.395-1.395 1.395a1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z"
+                    fill="url(#a)"></path>
+                <path
+                    d="M32.115 47.833c8.124 0 7.617-3.523 7.617-3.523l-.01-3.65H31.97v-1.095h10.832S48 40.155 48 31.958c0-8.197-4.537-7.906-4.537-7.906h-2.708v3.803s.146 4.537-4.465 4.537h-7.688s-4.32-.07-4.32 4.175v7.019s-.656 4.247 7.833 4.247zm4.275-2.454a1.393 1.393 0 0 1-1.395-1.395c0-.77.624-1.394 1.395-1.394s1.395.623 1.395 1.394c0 .772-.624 1.395-1.395 1.395z"
+                    fill="url(#b)"></path>
+                <defs>
+                    <linearGradient id="a" x1="19.075" y1="18.782" x2="34.898" y2="34.658"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#387EB8"></stop>
+                        <stop offset="1" stop-color="#366994"></stop>
+                    </linearGradient>
+                    <linearGradient id="b" x1="28.809" y1="28.882" x2="45.803" y2="45.163"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FFE052"></stop>
+                        <stop offset="1" stop-color="#FFC331"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="header">
+                <center><span class="welcometo">Welcome to</span> <br> <span class="python">Python</span></center>
+            </div>
+            <button class="App-button"><a href=hover.html?redirect=terms.html>Start learning now</a></button>
+        </div>
+
+
+
+        <div class="card-js">
+            <svg class="App-logo" xmlns="http://www.w3.org/2000/svg" aria-label="JavaScript" role="img"
+                viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="15%" fill="#f7df1e"></rect>
+                <path fill="#25241c"
+                    d="M324 370c10 17 24 29 47 29c20 0 33-10 33 -24c0-16 -13 -22 -35 -32l-12-5c-35-15 -58 -33 -58 -72c0-36 27 -64 70 -64c31 0 53 11 68 39l-37 24c-8-15 -17 -21 -31 -21c-14 0-23 9 -23 21c0 14 9 20 30 29l12 5c41 18 64 35 64 76c0 43-34 67 -80 67c-45 0-74 -21 -88 -49zm-170 4c8 13 14 25 31 25c16 0 26-6 26 -30V203h48v164c0 50-29 72 -72 72c-39 0-61 -20 -72 -44z">
+                </path>
+            </svg>
+            <div class="header">
+                <center>Welcome to<br> JavaScript</center>
+            </div>
+            <button class="App-button"><a href=hover.html?redirect=terms1.html>Start learning now</a></button>
+        </div>
+
+
+
+        <div class="card-c">
+            <svg xml:space="preserve" viewBox="0 0 306 344.35" y="0px" x="0px"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1"
+                class="App-logo">
+                <path d="M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175
+	L302.107,258.262z" fill="#00599C"></path>
+                <path d="M166.25,341.193l126.5-73.034c3.644-2.104,6.956-5.737,9.357-9.897L153,172.175L3.893,258.263
+	c2.401,4.159,5.714,7.793,9.357,9.896l126.5,73.034C147.037,345.401,158.963,345.401,166.25,341.193z" fill="#004482">
+                </path>
+                <path d="M302.108,86.087c-2.402-4.16-5.715-7.793-9.358-9.897L166.25,3.156c-7.287-4.208-19.213-4.208-26.5,0
+	L13.25,76.19C5.962,80.397,0,90.725,0,99.14v146.069c0,4.208,1.491,8.894,3.893,13.053L153,172.175L302.108,86.087z"
+                    fill="#659AD2"></path>
+                <g>
+                    <path d="M153,274.175c-56.243,0-102-45.757-102-102s45.757-102,102-102c36.292,0,70.139,19.53,88.331,50.968
+		l-44.143,25.544c-9.105-15.736-26.038-25.512-44.188-25.512c-28.122,0-51,22.878-51,51c0,28.121,22.878,51,51,51
+		c18.152,0,35.085-9.776,44.191-25.515l44.143,25.543C223.142,254.644,189.294,274.175,153,274.175z" fill="#131c25">
+                    </path>
+                </g>
+                <g>
+                    <polygon points="255,166.508 243.666,166.508 243.666,155.175 232.334,155.175 232.334,166.508 221,166.508 
+		221,177.841 232.334,177.841 232.334,189.175 243.666,189.175 243.666,177.841 255,177.841" fill="#131c25"></polygon>
+                </g>
+                <g>
+                    <polygon points="297.5,166.508 286.166,166.508 286.166,155.175 274.834,155.175 274.834,166.508 263.5,166.508 
+		263.5,177.841 274.834,177.841 274.834,189.175 286.166,189.175 286.166,177.841 297.5,177.841" fill="#131c25">
+                    </polygon>
+                </g>
+            </svg>
+            <div class="header">Welcome to C++</div>
+            <button class="App-button"><a href=hover.html?redirect=terms2.html>Start learning now</a></button>
+        </div>
+
+        <div class="card-sql">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="120" class="App-logo">
+                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path stroke-width="1.5" stroke="#cbe6ff" d="M5 12V18C5 18 5 21 12 21C19 21 19 18 19 18V12"></path>
+                    <path stroke-width="1.5" stroke="#cbe6ff" d="M5 6V12C5 12 5 15 12 15C19 15 19 12 19 12V6"></path>
+                    <path stroke-width="1.5" stroke="#cbe6ff"
+                        d="M12 3C19 3 19 6 19 6C19 6 19 9 12 9C5 9 5 6 5 6C5 6 5 3 12 3Z"></path>
+                </g>
+            </svg>
+            <div class="header">Welcome to SQL</div>
+            <button class="App-button"><a href=hover.html?redirect=terms3.html>Start learning now</a></button>
+        </div>
+    
+    </div>
+
+
+    <div class="road">
+        <div class="success">
+            <div class="shadow"><strong>PARIKSHA -- Your Success Path!!</strong></div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>PARIKSHA</h3>
+                <p>PARIKSHA Management Office<br>
+                    Chitkara University, Room 540<br>
+                    Chandigarh, MA 02114-1101
+                </p>
+                <p>9876543210<br>
+                    <a href="mailto:mghdevelopment@partners.org">PARIKSHA@partners.org</a>
+                </p>
+                <div class="footer-icons">
+
+                    <div class="card22">
+                        <span>Social</span>
+                        <a class="social-link" href="https://www.youtube.com/" target="_blank">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 461.001 461.001"
+                                xml:space="preserve" fill="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path style="fill:#F61C0D;"
+                                            d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728 c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137 C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607 c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/anhad-mahajan-974147313/">
+                            <svg fill="#000000" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/anhad-mahajan-974147313/">
+                            <svg viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
+                                fill="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path
+                                            d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
+                                            fill="#5865F2" fill-rule="nonzero"> </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/anhad-mahajan-974147313/">
+                            <svg fill="#000000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M488.1 414.7V303.4L300.9 428l83.6 55.8zm254.1 137.7v-79.8l-59.8 39.9zM512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm278 533c0 1.1-.1 2.1-.2 3.1 0 .4-.1.7-.2 1a14.16 14.16 0 0 1-.8 3.2c-.2.6-.4 1.2-.6 1.7-.2.4-.4.8-.5 1.2-.3.5-.5 1.1-.8 1.6-.2.4-.4.7-.7 1.1-.3.5-.7 1-1 1.5-.3.4-.5.7-.8 1-.4.4-.8.9-1.2 1.3-.3.3-.6.6-1 .9-.4.4-.9.8-1.4 1.1-.4.3-.7.6-1.1.8-.1.1-.3.2-.4.3L525.2 786c-4 2.7-8.6 4-13.2 4-4.7 0-9.3-1.4-13.3-4L244.6 616.9c-.1-.1-.3-.2-.4-.3l-1.1-.8c-.5-.4-.9-.7-1.3-1.1-.3-.3-.6-.6-1-.9-.4-.4-.8-.8-1.2-1.3a7 7 0 0 1-.8-1c-.4-.5-.7-1-1-1.5-.2-.4-.5-.7-.7-1.1-.3-.5-.6-1.1-.8-1.6-.2-.4-.4-.8-.5-1.2-.2-.6-.4-1.2-.6-1.7-.1-.4-.3-.8-.4-1.2-.2-.7-.3-1.3-.4-2-.1-.3-.1-.7-.2-1-.1-1-.2-2.1-.2-3.1V427.9c0-1 .1-2.1.2-3.1.1-.3.1-.7.2-1a14.16 14.16 0 0 1 .8-3.2c.2-.6.4-1.2.6-1.7.2-.4.4-.8.5-1.2.2-.5.5-1.1.8-1.6.2-.4.4-.7.7-1.1.6-.9 1.2-1.7 1.8-2.5.4-.4.8-.9 1.2-1.3.3-.3.6-.6 1-.9.4-.4.9-.8 1.3-1.1.4-.3.7-.6 1.1-.8.1-.1.3-.2.4-.3L498.7 239c8-5.3 18.5-5.3 26.5 0l254.1 169.1c.1.1.3.2.4.3l1.1.8 1.4 1.1c.3.3.6.6 1 .9.4.4.8.8 1.2 1.3.7.8 1.3 1.6 1.8 2.5.2.4.5.7.7 1.1.3.5.6 1 .8 1.6.2.4.4.8.5 1.2.2.6.4 1.2.6 1.7.1.4.3.8.4 1.2.2.7.3 1.3.4 2 .1.3.1.7.2 1 .1 1 .2 2.1.2 3.1V597zm-254.1 13.3v111.3L723.1 597l-83.6-55.8zM281.8 472.6v79.8l59.8-39.9zM512 456.1l-84.5 56.4 84.5 56.4 84.5-56.4zM723.1 428L535.9 303.4v111.3l103.6 69.1zM384.5 541.2L300.9 597l187.2 124.6V610.3l-103.6-69.1z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Stories</h4>
+                <a href="#">Find out what makes PARIKSHA unique. Get inspired.</a>
+                <h4>Events</h4>
+                <a href="#">Turn your knowlegde into mastery. Get involved.</a>
+                <h4>Where to Give</h4>
+                <a href="#">You can give test on test cards .</a>
+                <h4>How to Give</h4>
+                <a href="#">YJust select the write answer.</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Test management site</a></li>
+                    <li><a href="#">Pariksha </a></li>
+                    <li><a href="#">Multiple tests</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Privacy & Security</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Social Media Policy</a></li>
+                    <li><a href="#">Copyright Notice</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><strong>PARIKSHA is a modern platform built to streamline the creation, management, and analysis of
+                    educational
+                    tests.</strong><br>
+                &copy; 2024 PARIKSHA
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- <script src="logo.js"></script> -->
+    <script>
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 150,
+        };
+
+        const text = "PARIKSHA";
+
+        // Update mouse position
+        window.addEventListener("mousemove", (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        class Particle {
+            constructor(startX, startY, targetX, targetY) {
+                this.x = startX;
+                this.y = startY;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.size = 2;
+                this.color = "white";
+                this.density = Math.random() * 30 + 1;
+                this.velocityX = Math.random() * 2 - 1;
+                this.velocityY = Math.random() * 2 - 1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                const dx = this.targetX - this.x;
+                const dy = this.targetY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const springForce = 0.05;
+
+                this.x += dx * springForce;
+                this.y += dy * springForce;
+
+                const mouseDx = mouse.x - this.x;
+                const mouseDy = mouse.y - this.y;
+                const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
+
+                if (mouseDistance < mouse.radius) {
+                    const angle = Math.atan2(mouseDy, mouseDx);
+                    const force = (mouse.radius - mouseDistance) / mouse.radius;
+                    this.x -= Math.cos(angle) * force * 10;
+                    this.y -= Math.sin(angle) * force * 10;
+                }
+
+                this.x += this.velocityX * 0.3;
+                this.y += this.velocityY * 0.3;
+            }
+        }
+
+        function initParticles() {
+            ctx.font = `${Math.min(canvas.width / 6, 250)}px Arial`;
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < canvas.height; y += 6) {
+                for (let x = 0; x < canvas.width; x += 6) {
+                    const index = (y * canvas.width + x) * 4;
+                    if (textCoordinates.data[index + 3] > 128) {
+                        const randomSide = Math.floor(Math.random() * 4);
+                        let startX, startY;
+
+                        switch (randomSide) {
+                            case 0: // Left
+                                startX = Math.random() * -50;
+                                startY = Math.random() * canvas.height;
+                                break;
+                            case 1: // Right
+                                startX = canvas.width + Math.random() * 50;
+                                startY = Math.random() * canvas.height;
+                                break;
+                            case 2: // Top
+                                startX = Math.random() * canvas.width;
+                                startY = Math.random() * -50;
+                                break;
+                            case 3: // Bottom
+                                startX = Math.random() * canvas.width;
+                                startY = canvas.height + Math.random() * 50;
+                                break;
+                        }
+
+                        particles.push(new Particle(startX, startY, x, y));
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+                particle.draw();
+                particle.update();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles.length = 0;
+            initParticles();
+        });
+
+        initParticles();
+        animateParticles();
+    </script>
+
+    <script>
+        console.clear();
+
+        gsap.registerPlugin(Flip, ScrollTrigger);
+
+        let flipCtx;
+
+        const createTimeline = () => {
+            flipCtx && flipCtx.revert();
+
+            flipCtx = gsap.context(() => {
+                const secondState = Flip.getState(".second .marker");
+                const thirdState = Flip.getState(".third .marker");
+                const flipConfig = {
+                    ease: "none",
+                    duration: 1
+                };
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".container.initial",
+                        start: "clamp(top center)",
+                        endTrigger: ".final",
+                        end: "clamp(top center)",
+                        scrub: 1,
+                        // Uncomment for debugging
+                        // markers: true
+                    }
+                });
+
+                tl.add(Flip.fit(".box", secondState, flipConfig)).add(
+                    Flip.fit(".box", thirdState, flipConfig),
+                    "+=0.5"
+                );
+            });
+        };
+
+        createTimeline();
+        window.addEventListener("resize", createTimeline);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        const text11 = document.querySelector("#text");
+        const words = text11.innerText.split(" ");
+        text11.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+        const wordElements = document.querySelectorAll(".word");
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(wordElements, {
+            y: -100,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: text,
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+        });
+    </script>
+</body>
+
+</html>

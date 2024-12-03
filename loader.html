@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            /* For full page matching the dark theme */
+            color: #ffffff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #1c1c1c;
+            /* Dark background */
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #8a8a8a;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: none;
+            border: none;
+            font-size: 16px;
+            margin-right: 15px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .language-selector:hover {
+            color: #8a8a8a;
+        }
+
+        .contact-sales,
+        .login,
+        .sign-up {
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 15px;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        .contact-sales:hover,
+        .login:hover {
+            color: #8a8a8a;
+        }
+
+        .sign-up {
+            padding: 8px 15px;
+            background-color: #6a4ffc;
+            /* Purple button background */
+            color: #ffffff;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .sign-up:hover {
+            background-color: #593fcc;
+        }
+        body{
+            background-color:#aaa;
+        }
+.loader {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  perspective: 67px;
+  margin: auto;
+  margin-top: 50vh;
+}
+
+.loader div {
+  width: 100%;
+  height: 100%;
+  background: #2f3545;
+  position: absolute;
+  left: 50%;
+  transform-origin: left;
+  animation: loader 2s infinite;
+}
+
+.loader div:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loader div:nth-child(3) {
+  animation-delay: 0.45s;
+}
+
+.loader div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.loader div:nth-child(5) {
+  animation-delay: 0.75s;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50%, 80% {
+    transform: rotateY(-180deg);
+  }
+
+  90%, 100% {
+    opacity: 0;
+    transform: rotateY(-180deg);
+  }
+}
+
+/* From Uiverse.io by G4b413l */ 
+.card22 svg {
+height: 25px;
+}
+
+.card22 {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #e7e7e7;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+overflow: hidden;
+height: 50px;
+width: 200px;
+}
+
+.card22::before, .card22::after {
+position: absolute;
+display: flex;
+align-items: center;
+width: 50%;
+height: 100%;
+transition: 0.25s linear;
+z-index: 1;
+}
+
+.card22::before {
+content: "";
+left: 0;
+justify-content: flex-end;
+background-color: #4d60b6;
+}
+
+.card22::after {
+content: "";
+right: 0;
+justify-content: flex-start;
+background-color: #4453a6;
+}
+
+.card22:hover {
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card22:hover span {
+opacity: 0;
+z-index: -3;
+}
+
+.card22:hover::before {
+opacity: 0.5;
+transform: translateY(-100%);
+}
+
+.card22:hover::after {
+opacity: 0.5;
+transform: translateY(100%);
+}
+
+.card22 span {
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+color: whitesmoke;
+font-family: 'Fira Mono', monospace;
+font-size: 24px;
+font-weight: 700;
+opacity: 1;
+transition: opacity 0.25s;
+z-index: 2;
+}
+
+.card22 .social-link {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 25%;
+height: 100%;
+color: whitesmoke;
+font-size: 24px;
+text-decoration: none;
+transition: 0.25s;
+}
+
+.card22 .social-link svg {
+text-shadow: 1px 1px rgba(31, 74, 121, 0.7);
+transform: scale(1);
+}
+
+.card22 .social-link:hover {
+background-color: rgba(249, 244, 255, 0.774);
+animation: bounce_613 0.4s linear;
+}
+
+@keyframes bounce_613 {
+40% {
+transform: scale(1.4);
+}
+
+60% {
+transform: scale(0.8);
+}
+
+80% {
+transform: scale(1.2);
+}
+
+100% {
+transform: scale(1);
+}
+}
+
+a{
+text-decoration: none;
+color: white;
+}
+
+.txt3{
+display: flex;
+align-items: center;
+justify-content: center;
+/* font-size: 15px; */
+margin-bottom: 5vh;
+font-family: "Bebas Neue", sans-serif;
+font-weight: 400;
+font-style: normal;
+/* width: 100%; */
+/* height: 10vh; */
+}
+    </style>
+</head>
+<body> 
+  <header class="navbar">
+    <div class="logo">
+        <span>PARIKSHA</span>
+    </div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="book.html">Resources</a>
+        <a href="courses.html">Courses</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="feature.html">Features</a>
+        <a href="contact_us.html">Contact Us</a>
+    </nav>
+    <div class="actions">
+        <button class="language-selector"><a href="thanks.html">🌐</a></button>
+        <a href="payment.html" class="contact-sales">Contact Sales</a>
+        <a href="login.html" class="login">Log In</a>
+        <a href="signUp.html" class="sign-up">Sign Up</a>
+    </div>
+</header>
+<div class="loader">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    // Automatically redirect after 3 seconds
+    window.onload = function () {
+      // Get the redirect query parameter
+      const params = new URLSearchParams(window.location.search);
+      const redirectUrl = params.get('redirect');
+
+      // Redirect if the parameter exists
+      if (redirectUrl) {
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 3000); // 3-second delay
+      }
+    };
+  </script>
+</div>
+</body>
+</html>

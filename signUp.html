@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    background-color: #8a8a8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 15vh;
+    position: relative;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    color: #00bfff;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .title::before,
+  .title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: #00bfff;
+  }
+  
+  .message, 
+  .signin {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .signin {
+    text-align: center;
+  }
+  
+  .signin a:hover {
+    text-decoration: underline royalblue;
+  }
+  
+  .signin a {
+    color: #00bfff;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+
+  #flex1{
+    width: 50%;
+    margin-right: 2vw;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 20px 05px 05px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 12.5px;
+    font-size: 0.9em;
+  }
+  
+  .form label .input:focus + span,
+  .form label .input:valid + span {
+    color: #00bfff;
+    top: 0px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .input {
+    font-size: medium;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    background-color: #00bfff;
+  }
+  
+  .submit:hover {
+    background-color: #00bfff96;
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+
+
+
+  /* header */
+
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* For full page matching the dark theme */
+     color: #ffffff;
+ } 
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    text-align: center; 
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c1c; /* Dark background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8a8a8a;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    margin-right: 5vh;
+}
+
+.language-selector {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-right: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.language-selector:hover {
+    color: #8a8a8a;
+}
+
+.contact-sales,
+.login,
+.sign-up {
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.contact-sales:hover,
+.login:hover {
+    color: #8a8a8a;
+}
+
+.sign-up {
+    padding: 8px 15px;
+    background-color: #6a4ffc; /* Purple button background */
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sign-up:hover {
+    background-color: #593fcc;
+}
+
+
+</style>    <title>Sign Up</title>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span>PARIKSHA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="book.html">Resources</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="feature.html">Features</a>
+            <a href="contact_us.html">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <button class="language-selector"><a href="thanks.html">🌐</a></button>
+            <a href="payment.html" class="contact-sales">Contact Sales</a>
+            <a href="login.html" class="login">Log In</a>
+            <a href="signUp.html" class="sign-up">Sign Up</a>
+        </div>
+    </header>
+    <form class="form">
+        <p class="title">Sign Up</p>
+        <p class="message">Signup now and get full access to our app.</p>
+        <div class="flex">
+            <label id="flex1">
+                <input class="input" type="text" id="firstName" placeholder="" required>
+                <span>Firstname</span>
+            </label>
+
+            <label>
+                <input class="input" type="text" id="lastName" placeholder="" required>
+                <span>Lastname</span>
+            </label>
+        </div>
+
+        <div class="flex">
+            <label>
+                <input class="input" type="text" id="phone" placeholder="" required>
+                <span>Phone Number</span>
+            </label>
+            <label>
+                <input class="input" type="date" id="dob" required>
+                <span>Date of Birth</span>
+            </label>
+        </div>
+
+        <!-- Gender section with consistent styling -->
+        <label class="gender-label">
+            <span>Gender:</span>
+            <div class="gender-options">
+                <label>
+                    <input type="radio" name="gender" value="Male" required>
+                    <span>Male</span>
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Female" required>
+                    <span>Female</span>
+                </label>
+            </div>
+        </label>
+
+        <label>
+            <input class="input" type="email" id="email" placeholder="" required>
+            <span>Email</span>
+        </label>
+
+        <label>
+            <input class="input" type="password" id="password" placeholder="" required>
+            <span>Password</span>
+        </label>
+        <label>
+            <input class="input" type="password" id="confirmPassword" placeholder="" required>
+            <span>Confirm Password</span>
+        </label>
+
+        <div class="flex">
+            <label>
+                <input class="input" type="text" id="street" placeholder="" required>
+                <span>Street Address</span>
+            </label>
+            <label>
+                <input class="input" type="text" id="city" placeholder="" required>
+                <span>City</span>
+            </label>
+        </div>
+
+        <div class="flex">
+            <label>
+                <input class="input" type="text" id="state" placeholder="" required>
+                <span>State</span>
+            </label>
+            <label>
+                <input class="input" type="text" id="country" placeholder="" required>
+                <span>Country</span>
+            </label>
+        </div>
+
+        <button type="button" class="submit" id="submitButton">Submit</button>
+        <p class="signin">Already have an account? <a href="#">Signin</a></p>
+    </form>
+
+
+
+    <script>
+        // Set the max date for the Date of Birth field to today's date
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            document.getElementById('dob').setAttribute('max', today); // Set the max attribute
+        });
+    
+        document.getElementById('submitButton').addEventListener('click', () => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const dob = document.getElementById('dob').value;
+    
+            // Email validation
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+    
+            // Password validation
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.");
+                return;
+            }
+    
+            // Confirm Password validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+    
+            // Check if DOB is empty
+            if (!dob) {
+                alert("Please select your date of birth.");
+                return;
+            }
+    
+            // Proceed if all validations pass
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                dob: dob,
+                gender: document.querySelector('input[name="gender"]:checked')?.value,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword,
+                street: document.getElementById('street').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                country: document.getElementById('country').value,
+            };
+    
+            localStorage.setItem('signUpData', JSON.stringify(formData));
+            alert('Sign-up data has been saved to localStorage!');
+    
+            window.location.href = "login.html"; 
+        });
+    </script>
+    
+</body>
+
+</html>

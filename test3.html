@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible=IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="./css/test.css">
+</head>
+
+<body>
+
+    <div class="quiz-container">
+    
+        <div class="sidebar-container">
+            <div id="sidebar" class="sidebar">
+                <ul id="questionList"></ul>
+            </div>
+            <div id="toggleSidebarButton" class="toggle-button">☰</div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div id="timer" class="timer-box"></div>
+            </div>
+            <div id="questionContent"></div>
+            <div id="optionsContainer"></div>
+            <div class="button-container">
+                <button id="prevButton" onclick="prevQuestion()">Previous</button> <!-- New Previous Button -->
+                <button id="nextButton" onclick="nextQuestion()">Next</button>
+                <button id="submitButton" onclick="calculateScore()">Submit</button>
+            </div>
+        </div>
+    </div>
+  
+    <div class="contain-chat">
+        <button id="openChatButton">GET HELP</button>
+  
+        <div id="chatModal">
+            <div class="chat-header">
+                <h2>Chatbot Assistant</h2>
+                <button class="close-btn" id="closeChatButton">&times;</button>
+            </div>
+            <div class="chat-body" id="chatDisplay">
+                <div class="chat-message other">Hello! How can I assist you today?</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type your message..." id="chatInput" />
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/test3.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - PARIKSHA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling only */
+    font-family: 'Arial', sans-serif;
+    background: #121212;
+    color: #f0f0f0;
+}
+
+        .card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .glow-effect {
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 50%;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #6c63ff, #00d4ff);
+            opacity: 0.3;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animated-background:nth-child(2) {
+            right: -100px;
+            left: auto;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(-20px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+        img{
+            height: 50vh;
+            width: 50vh;
+        }
+        
+    </style>
+</head>
+
+
+<body class="flex flex-col items-center justify-center min-h-screen py-10 relative">
+
+    
+    <!-- Background Animation -->
+    <div class="animated-background"></div>
+    <div class="animated-background"></div>
+
+    <header class="mb-10 text-center">
+        <h1 class="text-4xl font-bold animate_animated animate_fadeInDown">Secure Payment for <span class="text-indigo-500">Pariksha</span></h1>
+        <p class="text-gray-400 mt-2 animate_animated animate_fadeIn">Complete your payment to get started with your chosen plan.</p>
+    </header>
+    <div class="w-full max-w-3xl bg-gray-900 p-8 rounded-lg shadow-md card glow-effect">
+        <h2 class="text-xl font-bold text-gray-300 mb-6">Payment Details</h2>
+        <form id="payment-form">
+            <!-- Billing Details -->
+            <div class="mb-6">
+                <label class="block text-gray-400 text-sm mb-2" for="full-name">Full Name</label>
+                <input
+                    type="text"
+                    id="full-name"
+                    name="full-name"
+                    class="w-full p-3 rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500"
+                    placeholder="John Doe"
+                />
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-400 text-sm mb-2" for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full p-3 rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500"
+                    placeholder="example@email.com"
+                />
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-400 text-sm mb-2" for="address">Billing Address</label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    class="w-full p-3 rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500"
+                    placeholder="1234 Street Name, City"
+                />
+            </div>
+
+            <!-- Payment Method -->
+            <div class="mb-6">
+                <p class="block text-gray-400 text-sm mb-2">Select Payment Method</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer border border-transparent hover:bg-gray-700">
+                        <input type="radio" name="payment-method" value="credit-card" class="hidden">
+                        <div>
+                            <p class="text-gray-200 font-semibold">Credit/Debit Card</p>
+                            <p class="text-gray-400 text-sm">Visa, MasterCard, AMEX</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer border border-transparent hover:bg-gray-700">
+                        <input type="radio" name="payment-method" value="qr" class="hidden">
+                        <div>
+                            <p class="text-gray-200 font-semibold">QR Code</p>
+                            <p class="text-gray-400 text-sm">Scan to Pay</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Plan Summary -->
+            <div class="mb-6 bg-gray-800 p-4 rounded-lg">
+                <h3 class="text-lg font-bold text-gray-300">Plan Summary</h3>
+                <p class="text-gray-400 mt-2">You have selected the <span class="text-indigo-400 font-bold">Professional Plan</span>.</p>
+                <p class="text-gray-200 mt-1">Total: <span class="text-green-400 font-bold">$29/month</span></p>
+            </div>
+
+            <!-- QR Code -->
+            <div id="qr-code-section" class="mb-6 hidden">
+                <h4 class="text-lg font-bold text-gray-300">Scan to Pay</h4>
+                <img src="./pics/qr.jpg" alt="QR Code" class="mt-4 mx-auto">
+                <p class="text-gray-400 text-sm mt-2 text-center">Use your mobile payment app to scan this QR code.</p>
+            </div>
+
+            <!-- Submit -->
+            <button
+                type="button"
+                id="payment-button"
+                class="w-full bg-indigo-600 p-3 rounded-lg text-gray-200 font-bold hover:bg-indigo-500 transition"
+            >
+                <a href="index.html">Complete Payment</a>
+            </button>
+        </form>
+    </div>
+    <footer class="mt-10 text-center text-gray-500">
+        <p>&copy; 2024 Pariksha. All rights reserved.</p>
+        <p class="text-sm">Your payment is secure and encrypted.</p>
+    </footer>
+
+    <script>
+        const paymentButton = document.getElementById('payment-button');
+        const qrCodeSection = document.getElementById('qr-code-section');
+
+        paymentButton.addEventListener('click', () => {
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+
+            if (!selectedPaymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            if (selectedPaymentMethod.value === 'qr') {
+                qrCodeSection.classList.remove('hidden');
+                alert("Scan the QR code to complete your payment.");
+            } else {
+                alert("Payment processed successfully. Thank you!");
+            }
+        });
+    </script>
+</body>
+</html>

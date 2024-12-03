@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span>PARIKSHA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="book.html">Resources</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="feature.html">Features</a>
+            <a href="contact_us.html">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <button class="language-selector"><a href="thanks.html">🌐</a></button>
+            <a href="payment.html" class="contact-sales">Contact Sales</a>
+            <a href="login.html" class="login">Log In</a>
+            <a href="signUp.html" class="sign-up">Sign Up</a>
+        </div>
+    </header>
+
+    <div class="login-box">
+        <p>Login</p>
+        <form id="loginForm">
+            <div class="user-box">
+                <input required name="email" type="text" id="loginEmail">
+                <label>Email</label>
+            </div>
+            <div class="user-box">
+                <input required name="password" type="password" id="loginPassword">
+                <label>Password</label>
+            </div>
+            <a >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <!-- <button type="button" id="loginButton" class="submit">
+                Submit
+            </button> -->
+            <button class="button" type="button" id="loginButton" class="submit">
+              <div class="blob1"></div>
+              <div class="blob2"></div>
+              <div class="inner">Submit</div>
+            </button>
+            </a>
+        </form>
+        <p>Don't have an account? <a href="signUp.html" class="a2">Sign up!</a></p>
+    </div>
+
+
+
+
+    <script>
+        document.getElementById('loginButton').addEventListener('click', () => {
+            const enteredEmail = document.getElementById('loginEmail').value;
+            const enteredPassword = document.getElementById('loginPassword').value;
+
+            const storedData = JSON.parse(localStorage.getItem('signUpData'));
+
+            if (storedData) {
+                if (storedData.email === enteredEmail && storedData.password === enteredPassword) {
+                    alert('Login successful!');
+                    window.location.href = "index2.html"; 
+                } else {
+                    alert('Invalid email or password. Please try again.');
+                }
+            } else {
+                alert('No user found. Please sign up first.');
+            }
+        });
+    </script>
+</body>
+</html>
