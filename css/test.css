@@ -1,0 +1,291 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20vh 9vw; /* Adjusted padding for better responsiveness */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #343a40;
+}
+
+.quiz-container {
+    display: flex;
+    width: 90%; /* Changed to 90% for better responsiveness */
+    max-width: 1000px; /* Keep max width for larger screens */
+    border: 1px solid #ccc;
+    background-color: #adb5bd;
+    border-radius: 8px; /* Optional: added rounded corners for aesthetics */
+}
+
+.sidebar-container {
+    position: relative;
+}
+
+.toggle-button {
+    position: absolute;
+    left: 14vw; /* Changed from vh to vw for better responsiveness */
+    top:5vh;
+    transform: translateY(-50%);
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 1vh 2vw; /* Adjusted padding for responsiveness */
+    border-radius: 5px;
+    z-index: 1;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.sidebar {
+    width: 20vw; /* Changed from fixed width to vw */
+    transition: width 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar.minimized {
+    width: 0;
+    padding: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 2vh; /* Adjusted padding */
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 2vh; /* Increased padding for better touch targets on mobile */
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background-color: #e0e0e0;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 3vh; /* Adjusted padding for main content */
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timer-box {
+    font-size: 2vh; /* Adjusted font size for responsiveness */
+    padding: 1vh; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.option {
+    margin-bottom: 1.5vh; 
+    padding: 2vh; 
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #dcdcdc;
+}
+
+.option.selected {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.button-container {
+    display: flex;
+    gap: 2vw; 
+    margin-top: 3vh; 
+}
+
+#nextButton, #submitButton, #prevButton {
+    padding: 1.5vh 3vw; 
+    border: none;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#nextButton:hover, #submitButton:hover #prevButton:hover {
+    background-color: #0056b3;
+}
+
+#submitButton {
+    display: none;
+}
+
+/* Adjust toggle button position when sidebar is minimized */
+.sidebar.minimized ~ .toggle-button {
+    top: 2vh; /* Move to the top when minimized */
+    left: 2vw; /* Adjust for responsiveness */
+    transform: translateY(0);
+}
+
+/* Adjust the sidebar position when minimized */
+.sidebar.minimized {
+    height: 100%; /* Maintain height */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 30vw; /* Slightly wider sidebar on tablets */
+    }
+    .toggle-button {
+        padding: 1vh 1.5vw; /* Smaller padding for the button */
+    }
+    .timer-box {
+        font-size: 1.8vh; /* Slightly smaller font size */
+    }
+    .option {
+        padding: 1.5vh; /* Adjusted padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 40vw; /* Wider sidebar on mobile devices */
+    }
+    .toggle-button {
+        left: 2vw; /* Adjust position */
+        padding: 0.5vh 1vw; /* Further reduce padding */
+    }
+    .timer-box {
+        font-size: 1.5vh; /* Further reduce font size */
+    }
+    .option {
+        padding: 1vh; /* Smaller option padding */
+    }
+}
+
+
+
+#openChatButton {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: fixed;
+    top: 92%;
+    left: 90%;
+}
+#openChatButton:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styles */
+#chatModal {
+    position: fixed;
+    top: 60%;
+    left: 86%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+/* Modal Header */
+.chat-header {
+    padding: 10px 15px;
+    background-color: #333333;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+.chat-header .close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* Chat Body */
+.chat-body {
+    height: 300px;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.chat-message {
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    font-size: 14px;
+}
+.chat-message.self {
+    background-color: #007BFF;
+    color: #ffffff;
+    align-self: flex-end;
+}
+.chat-message.other {
+    background-color: #444444;
+    color: #ffffff;
+    align-self: flex-start;
+}
+/* Chat Footer */
+.chat-footer {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #333333;
+    background-color: #1E1E1E;
+}
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #333333;
+    color: #ffffff;
+}
+.chat-footer input::placeholder {
+    color: #888888;
+}
+.chat-footer button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.chat-footer button:hover {
+    background-color: #0056b3;
+}
+
+.sidebar li.active {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+
+
+        

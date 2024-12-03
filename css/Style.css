@@ -1,0 +1,695 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* For full page matching the dark theme */
+     color: #ffffff;
+ } 
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    text-align: center; 
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c1c; /* Dark background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+.logo span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8a8a8a;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    margin-right: 5vh;
+}
+
+.language-selector {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-right: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.language-selector:hover {
+    color: #8a8a8a;
+}
+
+.contact-sales,
+.login,
+.sign-up {
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.contact-sales:hover,
+.login:hover {
+    color: #8a8a8a;
+}
+
+.sign-up {
+    padding: 8px 15px;
+    background-color: #6a4ffc; /* Purple button background */
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sign-up:hover {
+    background-color: #593fcc;
+}
+
+
+
+
+
+
+
+/* card start */
+
+
+
+
+.card-container{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+
+
+
+
+
+/* From Uiverse.io by Spacious74 */ 
+.road{
+  margin-top: 6vh;
+}
+.success {
+  width: 95vw;
+  height: 20vh;
+  background: #353535;
+  transform-style: preserve-3d;
+  transform: perspective(35rem) rotateX(30deg);
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.success::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff 70%,
+    #353535 70%,
+    #353535 100%
+  );
+  background-size: 120px;
+  animation: animateRoad 0.5s linear infinite;
+}
+@keyframes animateRoad {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -120px;
+  }
+}
+
+.success::after {
+  content: "";
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: -20px;
+  background-color: #272727;
+  transform-origin: top;
+  transform: perspective(30rem) rotateX(-30deg);
+  box-shadow: 0 10px 20px -2px #272727;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.shadow {
+  color: #fff;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+
+
+
+
+
+/* footer */
+.footer-container {
+  font-family: Arial, sans-serif;
+  margin-top: 0;
+  padding: 0;
+}
+
+.footer {
+  background-color: #253447;
+  color: #fff;
+  padding: 40px 20px;
+  margin-top: 15vh;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #61dafb;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-icons img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.footer-icons a {
+  display: inline-block;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 20px;
+}
+
+
+/* From Uiverse.io by aadium */ 
+.card-py {
+  background-color: #191e24;
+  border: 3px solid #387EB8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 25px 5px;
+  color: white;
+  border-radius: 45px;
+  width: 20vw;
+  margin-left: 8vw;
+}
+
+.App-logo {
+  pointer-events: none;
+  margin-top: -40px;
+  margin-bottom: -40px;
+  width: 250px;
+}
+
+.App-button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #FFE052;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  border: 3px solid #FFE052;
+  border-radius: 5em;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+
+.App-button:hover {
+  color: #191e24;
+  background-color: #FFE052;
+}
+
+.welcometo {
+  color: #387EB8;
+}
+
+.python {
+  color: #FFE052;
+}
+
+
+
+/* From Uiverse.io by aadium */ 
+.card-js {
+  background-color: #25241c;
+  border: 3px solid #f7df1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 30px 40px;
+  color: #f7df1e;
+  border-radius: 45px;
+}
+
+.App-logo {
+  pointer-events: none;
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.App-button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #f7df1e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  border: 3px solid #f7df1e;
+  border-radius: 5em;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+
+.App-button:hover {
+  color: #2e2d23;
+  background-color: #f7df1e;
+}
+
+
+
+/* From Uiverse.io by aadium */ 
+.card-c {
+  background-color: #131c25;
+  border: 3px solid #659AD2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 30px 20px;
+  color: #659AD2;
+  border-radius: 45px;
+}
+
+.App-logo {
+  pointer-events: none;
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.App-button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #659AD2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  border: 3px solid #659AD2;
+  border-radius: 5em;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+
+.App-button:hover {
+  color: #282c34;
+  background-color: #659AD2;
+}
+
+
+.card-container{
+  /* margin-left: 5vh; */
+  margin-right: 10vh;
+}
+
+
+
+/* From Uiverse.io by JoseArjona */ 
+.card-sql {
+  background-color: #1f1e27;
+  border: 3px solid #cbe6ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 30px 20px;
+  color: #cbe6ff;
+  border-radius: 45px;
+}
+
+.App-logo {
+  pointer-events: none;
+  margin-top: -10px;
+}
+
+.App-button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #cbe6ff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  border: 3px solid #cbe6ff;
+  border-radius: 5em;
+  margin-top: 20px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.App-button:hover {
+  color: #1e2127;
+  background-color: #cbe6ff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-sql:hover .App-logo {
+    -webkit-animation: wobble-hor-bottom 0.9s ease-in both;
+    animation: wobble-hor-bottom 0.9s ease-in both;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2024-5-21 16:40:58
+ * Licensed under FreeBSD License.
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation wobble-hor-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+
+
+/* footer */
+.footer-container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  background-color: #253447;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #6ab1e2;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-icons img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.footer-icons a {
+  display: inline-block;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 20px;
+}
+
+
+
+
+/* From Uiverse.io by G4b413l */ 
+.card22 svg {
+height: 25px;
+}
+
+.card22 {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #e7e7e7;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+overflow: hidden;
+height: 50px;
+width: 200px;
+}
+
+.card22::before, .card22::after {
+position: absolute;
+display: flex;
+align-items: center;
+width: 50%;
+height: 100%;
+transition: 0.25s linear;
+z-index: 1;
+}
+
+.card22::before {
+content: "";
+left: 0;
+justify-content: flex-end;
+background-color: #4d60b6;
+}
+
+.card22::after {
+content: "";
+right: 0;
+justify-content: flex-start;
+background-color: #4453a6;
+}
+
+.card22:hover {
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card22:hover span {
+opacity: 0;
+z-index: -3;
+}
+
+.card22:hover::before {
+opacity: 0.5;
+transform: translateY(-100%);
+}
+
+.card22:hover::after {
+opacity: 0.5;
+transform: translateY(100%);
+}
+
+.card22 span {
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+color: whitesmoke;
+font-family: 'Fira Mono', monospace;
+font-size: 24px;
+font-weight: 700;
+opacity: 1;
+transition: opacity 0.25s;
+z-index: 2;
+}
+
+.card22 .social-link {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 25%;
+height: 100%;
+color: whitesmoke;
+font-size: 24px;
+text-decoration: none;
+transition: 0.25s;
+}
+
+.card22 .social-link svg {
+text-shadow: 1px 1px rgba(31, 74, 121, 0.7);
+transform: scale(1);
+}
+
+.card22 .social-link:hover {
+background-color: rgba(249, 244, 255, 0.774);
+animation: bounce_613 0.4s linear;
+}
+
+@keyframes bounce_613 {
+40% {
+  transform: scale(1.4);
+}
+
+60% {
+  transform: scale(0.8);
+}
+
+80% {
+  transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.txt3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 15px; */
+  margin-bottom: 5vh;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* width: 100%; */
+  /* height: 10vh; */
+}
